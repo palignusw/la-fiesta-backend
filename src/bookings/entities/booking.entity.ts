@@ -7,12 +7,11 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-export type BookingStatus = 'pending' | 'confirmed' | 'cancelled';
 
 // Грузинские названия типов событий — как у тебя на фронте
 export type EventType = 'ქორწილი' | 'ნათლობა' | 'ბანკეტი' | 'გასვენების სუფრა';
 
-@Index(['date', 'status'])
+@Index(['date'])
 @Entity()
 export class Booking {
   @PrimaryGeneratedColumn()
@@ -40,11 +39,11 @@ export class Booking {
   @Column({ type: 'varchar', length: 32 })
   eventType: EventType;
 
-  @Column({ default: 'pending' })
-  status: BookingStatus;
+  //   @Column({ default: 'pending' })
+  //   status: BookingStatus;
 
-  @Column({ type: 'text', nullable: true })
-  notes: string | null;
+  //   @Column({ type: 'text', nullable: true })
+  //   notes: string | null;
 
   @CreateDateColumn()
   createdAt: Date;

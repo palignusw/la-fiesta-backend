@@ -16,7 +16,7 @@ import { BookingsModule } from './bookings/bookings.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
       timezone: 'Z',
     }),
     BookingsModule,

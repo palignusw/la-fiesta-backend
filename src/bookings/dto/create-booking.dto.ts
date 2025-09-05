@@ -8,13 +8,8 @@ import {
   Matches,
   Max,
   Min,
-  ValidateIf,
 } from 'class-validator';
-import {
-  GE_PHONE_RE,
-  allowedPackageSlugs,
-  isFutureYmd,
-} from '../../common/validators';
+import { GE_PHONE_RE } from '../../common/validators';
 
 const EVENT_TYPES = [
   'ქორწილი',

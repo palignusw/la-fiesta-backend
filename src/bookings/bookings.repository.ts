@@ -1,5 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Booking } from './entities/booking.entity';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingDto } from './dto/update-booking.dto';
@@ -34,7 +34,6 @@ export class BookingsRepository {
     const sameDay = await this.bookingsRepository
       .createQueryBuilder('b')
       .where('b.date = :d', { d: dto.date })
-      .andWhere('b.status <> :cancelled', { cancelled: 'cancelled' })
       .getOne();
     if (sameDay) return { ok: false, reason: 'occupied' as const };
 
@@ -47,8 +46,6 @@ export class BookingsRepository {
         message: dto.message ?? null,
         packageSlug: dto.packageSlug,
         eventType: dto.eventType,
-        status: 'pending',
-        notes: null,
       }),
     );
 
